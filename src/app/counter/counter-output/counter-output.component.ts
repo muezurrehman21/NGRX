@@ -11,25 +11,16 @@ import { Observable, Subscription } from 'rxjs';
 export class CounterOutputComponent implements OnInit, OnDestroy {
 
   counter : number | undefined;
-  counterSubscription : Subscription | undefined;
-  
-  //we can use following instead of using subscriptiom.
   counter$ !: Observable<{ counter : number }>;
-
   constructor(private store: Store<{ counter: CounterState }>){
 
   }
 
   ngOnInit(): void {
-    this.counterSubscription = this.store.select('counter').subscribe(date=>{
-      this.counter = date.counter;
-    });
-
     this.counter$ = this.store.select('counter');
   }
 
   ngOnDestroy(): void {
-    this.counterSubscription?.unsubscribe();
   }
 
 
