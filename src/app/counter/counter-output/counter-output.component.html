@@ -1,5 +1,13 @@
-<div>
+<!-- <div>
     <h3>
         Counter is : {{ counter }}
+    </h3>
+</div> -->
+
+<!-- we can use output with observable using asyn pipe function -->
+
+<div>
+    <h3>
+        Counter is : {{ (counter$ | async)?.counter }}
     </h3>
 </div>
